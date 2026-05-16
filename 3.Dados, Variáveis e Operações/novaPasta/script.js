@@ -1,0 +1,1 @@
+console.log("Estamos dentro da pasta novaPasta"); 
