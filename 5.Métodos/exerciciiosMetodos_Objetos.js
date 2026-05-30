@@ -38,11 +38,13 @@ const venda = {
 
   aplicarDescontoGPT: function (percentual) {
     let valorTotal = this.quantidade * this.precoUnitario; //EX2 - CHATGPT (% desconto)
-    this.desconto = (valorTotal * percentual) / 100; //EX2 - CHATGPT (% desconto)
+    this.desconto = (valorTotal * percentual) / 100; //EX2 - CHATGPT (% desconto)   ==>% será definido ao chamar a FUNÇÂO
   },
+
   atualizarQuantidade: function (newQuantidade) {
-    this.quantidade = newQuantidade; //EX3
+    this.quantidade = newQuantidade; //EX3            ==>atribui novo valor à venda.quantidade
   },
+
   verificarEstoque: function (estoque) {
     if (this.quantidade > estoque) {
       return console.log('EX4 - NOK');
@@ -74,7 +76,7 @@ console.log(venda.detalharVenda()); //EX1 - EXECUTANDO
 
 // Exercício 2: Adicione um método ao objeto Venda chamado aplicarDesconto que recebe um valor percentual e atualiza o desconto da venda. Aplique um desconto de 10% e verifique o valor total com o método calcularTotal.
 
-venda.aplicarDescontoGPT(10); //EX2 - CHATGPT executando (% desconto)
+venda.aplicarDescontoGPT(5); //EX2 - CHATGPT executando (% desconto)
 console.log('EX2 - CHATGPT: ' + venda.calcularTotal() + ' valor total'); //EX2 - CHATGPT executando (% desconto)
 console.log('EX2 - CHATGPT: ' + venda.desconto + ' desconto'); //EX2 - CHATGPT executando (% desconto)
 //END SOLUÇÃO CHATGPT
@@ -93,25 +95,70 @@ console.log('EX2 - CHATGPT: ' + venda.desconto + ' desconto'); //EX2 - CHATGPT e
 // //ERRADO - aplicarDesconto2------------------------------------------------------------------------------------------
 
 // Exercício 3: Adicione um método ao objeto Venda chamado atualizarQuantidade que  recebe um número e altera a quantidade do produto na venda. Atualize a quantidade e verifique o total da venda após a atualização.
-venda.atualizarQuantidade(5);
+
+venda.atualizarQuantidade(10);
+console.log('EX3 - A nova quantidade é de ' + venda.quantidade);
 console.log(venda.calcularTotal());
 
 // Exercício 4: Adicione um método chamado verificarEstoque que recebe a quantidade disponível em estoque e retorna uma mensagem fixa indicando se a venda pode ser realizada ou se é necessário ajustar a quantidade.
 // venda.estoque = ''; //EX4 ==>cria PROPRIEDADE "estoque" no OBJETO "venda"
-venda.verificarEstoque(6);
+venda.verificarEstoque(16);
 
 // Exercício 5: Retorne um array com todas as suas propriedades e valores do objeto Venda. Exiba as propriedades e valores em um formato legível.
+console.log('EX5 - ');
+console.log(Object.entries(venda));
 
 // Exercício 6: Obtenha um array com os nomes de todas as propriedades do objeto Venda. Exiba as propriedades do objeto.
-
+console.log('EX6 - ');
+console.log(Object.keys(venda));
 // Exercício 7: Obtenha um array com todos os valores das propriedades do objeto Venda. Exiba os valores das propriedades.
+console.log('EX7 - ');
+console.log(Object.values(venda));
 
 // Exercício 8: Verifique se o objeto Venda possui a propriedade desconto. Retorne a verificação diretamente em uma mensagem fixa.
+console.log('desconto' in venda); //CHATGPT usando IN
+console.log('EX8 - a ' + venda.hasOwnProperty('desconto')); //Usando hasOwnProperty
+console.log('EX8 - b ' + Object.keys(venda).includes('desconto')); //Usando KEYS + INCLUDES
 
 // Exercício 9: Crie um novo objeto NovaVenda que contenha as mesmas propriedades e valores de Venda, mas com um produto e quantidade diferentes. Exiba o novo objeto NovaVenda.
+const novaVenda = {};
+Object.assign(novaVenda, venda); //CREATE n/ funciona pq n/ copia!!!! ==>create
+console.log('EX9 - ') + console.log(novaVenda);
+
+const novaVenda2 = Object.assign({}, venda, {
+  produto: 'CARRO', //Solução HASHTAG
+  quantidade: 1,
+});
+console.log(novaVenda2);
 
 // Exercício 10: Adicione uma nova propriedade data ao objeto Venda, definindo-a como não enumerável. Exiba todas as propriedades do objeto Venda e, em seguida, exiba o valor da nova propriedade data separadamente.
+Object.defineProperty(venda, 'data', {
+  value: '12.25',
+  enumerable: false, //Esconde PROPRIEDADE (keys)
+});
+console.log('EX10 - ') + console.log(Object.keys(venda));
+console.log(venda.data);
 
 // Exercício 11: Crie um novo objeto DescontoEspecial que herde as propriedades do objeto Venda, mas com um desconto fixo de 20%. Exiba as propriedades do novo objeto e verifique se o desconto foi aplicado corretamente.
+console.log('EX11 - ');
+const descontoEspecial = Object.create(venda);
+console.log(Object.keys(descontoEspecial)); //N/ traz nada pq NÃO tem propriedade!
+
+//função p/ desconto    VER C/ CHATGPT-----------------------------------------------------------------------
+// descontoEspecial.venda = function (descontoFixo) {
+//   return descontoEspecial.precoUnitario * descontoEspecial.quantidade * (descontoFixo / 100);
+// };
+// VER C/ CHATGPT-----------------------------------------------------------------------
+
+descontoEspecial.calcularDesconto = function () {
+  return this.precoUnitario * this.quantidade * 0.2;
+};
+venda.quantidade = 10;
+venda.precoUnitario = 1000;
+console.log(descontoEspecial.calcularDesconto());
 
 // Exercício 12: Remova a propriedade desconto do objeto Venda. Verifique se a propriedade foi removida com sucesso e exiba as propriedades restantes do objeto
+delete venda.desconto;
+console.log('EX12 - ');
+console.log(Object.keys(venda));
+console.log(venda.desconto);
