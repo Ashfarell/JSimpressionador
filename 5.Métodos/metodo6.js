@@ -77,3 +77,55 @@ console.log(Number.isFinite(infinito));
 console.log(Number.isFinite(inteiro)); //é FINITO
 console.log(Number.isFinite('Hello'));
 console.log(Number.isFinite(100000000000000000000 * 10000000000000.0 * 10000000000.28283273727273));
+
+const nova = Math.random() * 100;
+
+console.log(nova) * 100 * 0.1;
+
+//31. Objeto Global - Math - parte 3
+
+//Math.min()
+//Math.Max()
+
+console.log(Math.min(2, 10, 25, 30));
+
+console.log(Math.max(2, 10, 25, 30));
+
+//Objeto Global - Date - parte 1
+// CLASS
+
+class Materiais {
+  escola = 'caderno';
+  carro = 'volante';
+}
+
+const classeMateriais = new Materiais(); //Instanciar a CLASS = armazena-la!!
+
+console.log(classeMateriais.escola);
+console.log(classeMateriais.carro);
+
+// Objeto global - DATE
+console.log(Math);
+
+console.log(Date);
+
+console.log(new Date()); //CLASSE DO JAVASCRIPT
+
+const dataAtual = new Date();
+console.log(dataAtual);
+
+console.log(dataAtual.getFullYear());
+console.log(dataAtual.getDate());
+console.log(dataAtual.getFullYear());
+console.log(dataAtual.getMonth()); //0-11 ==> junho = 5
+console.log(dataAtual.getDate());
+console.log(dataAtual.getHours());
+console.log(dataAtual.getMinutes());
+
+console.log(dataAtual.getTime()); //Retorna Nº grande (tempo contado em milissegundos desde 01/01/1970)
+let timestamp = dataAtual.getTime(); //???
+console.log(dataAtual); //Retorna Nº grande - desde 01/01/1970)
+console.log(timestamp); //timestamp ==>representação numérica
+
+console.log(new Date(1780600788289));
+console.log(dataAtual.getDate());
