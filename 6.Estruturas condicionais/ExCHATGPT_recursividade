@@ -1,0 +1,124 @@
+// 💪 Mini treino (EX Rec-1)
+// function contarCrescente(a, b) {
+//   while (a <= b) {
+//     console.log(a); //Funciona mas não é RECURSIVIDADE
+//     a++;
+//   }
+// }
+// contarCrescente(1, 5);
+
+//
+function contarCrescente2(a, b) {
+  console.log(a);
+  if (a < b) {
+    contarCrescente2(a + 1, b);
+  }
+}
+
+contarCrescente2(1, 5);
+console.log('FIM EX1');
+
+// 💪 EX Rec-2 — Soma recursiva //
+// 👉 receba um número n
+// 👉 retorne a soma de todos os números de 1 até n
+
+function somarAte(a) {
+  if (a === 1) {
+    return 1;
+  } else {
+    return a + somarAte(a - 1);
+  }
+}
+console.log(somarAte(5));
+console.log('FIM EX2');
+
+// 🧠 💪 EX Rec-3 — Fibonacci (início guiado)
+// Crie uma função recursiva que retorne o número de Fibonacci de n.  // F(n) = F(n - 1) + F(n - 2)
+// if n == 0 → retorna 0
+// if n == 1 → retorna 1
+// senão → F(n) = F(n-1) + F(n-2)
+
+function fib(n) {
+  if (n === 0) {
+    return 0;
+  } else if (n === 1) {
+    return 1;
+  } else {
+    return fib(n - 1) + fib(n - 2);
+  }
+}
+
+console.log(fib(4));
+console.log('FIM EX3');
+
+// 🧠 💪 EX Rec-4 — Contagem recursiva
+
+function contagemRecur(n) {
+  console.log(n);
+  if (n === 1) {
+    return 1;
+  } else {
+    return contagemRecur(n - 1);
+  }
+}
+
+contagemRecur(5);
+console.log('FIM EX4');
+
+// 🧠 💪 EX Rec-5 — Contagem reversa
+function contarReverso(n) {
+  if (n === 1) {
+    console.log(1);
+    return;
+  } else {
+    console.log(n);
+    return contarReverso(n - 1);
+  }
+}
+contarReverso(5);
+console.log('FIM EX5');
+
+// 🧠 💪 EX Rec-6 — Soma recursiva (com impressão + retorno)
+function somaRecur(n) {
+  if (n === 1) {
+    return 1;
+  } else {
+    return n + somaRecur(n - 1);
+  }
+}
+console.log(somaRecur(5));
+console.log('FIM EX6');
+
+// 🧠 💪 EX Rec-7 — Contagem crescente (versão recursiva)
+function contCrescente(a, b) {
+  console.log(a);
+  if (a === b) {
+    return 1;
+  } else {
+    return contCrescente(a + 1, b);
+  }
+}
+contCrescente(1, 5);
+console.log('FIM EX7');
+
+// 🧠 💪 EX Rec-8 — Soma de array (recursivo)
+let lista8 = [2, 4, 6];
+
+function somaArray(lista) {
+  let soma = 0;
+  for (let i = 0; i < lista.length; i++) {
+    if (i >= lista.length) {
+      return;
+    } else {
+      console.log(soma);
+      return soma + somaArray(lista[i]);
+    }
+  }
+}
+
+console.log(somaArray(lista8));
+console.log('FIM EX8');
+
+// 🧠 💪 EX Rec-9 — Contar negativos (recursivo)
+
+// 🧠 💪 EX Rec-10 — Buscar elemento (recursivo)
