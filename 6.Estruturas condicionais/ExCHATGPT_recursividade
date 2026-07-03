@@ -118,7 +118,3 @@ function somaArray(lista) {
 
 console.log(somaArray(lista8));
 console.log('FIM EX8');
-
-// 🧠 💪 EX Rec-9 — Contar negativos (recursivo)
-
-// 🧠 💪 EX Rec-10 — Buscar elemento (recursivo)
