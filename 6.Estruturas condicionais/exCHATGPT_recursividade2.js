@@ -17,7 +17,7 @@ function contagemCrescente(n) {
   }
 
   contagemCrescente(n - 1);
-  console.log(n); //CONTGEM PROGRESSIVA ==>console.log DEPOI da chamada
+  console.log(n); //CONTGEM PROGRESSIVA ==>console.log DEPOIS da chamada
 }
 console.log('A');
 contagemCrescente(5);
