@@ -26,7 +26,7 @@ console.log('Fim EX1------------------------------------------------------------
 
 // Requisito 2: Gerenciamento de Despesas
 // ❖ Crie uma função que receba um objeto representando as despesas mensais em diferentes categorias.
-// ❖ Afunçãodeve calcular e retornar o total de despesas.
+// ❖ A função deve calcular e retornar o total de despesas.
 // Função: gerenciarDespesas
 
 const despesasMensais = {
@@ -43,9 +43,9 @@ const despesasMensais = {
     despesa: 1200,
   },
 };
-console.log(despesasMensais);
-console.log(despesasMensais.categoriaB);
-console.log(Object.keys(despesasMensais));
+// console.log(despesasMensais);
+// console.log(despesasMensais.categoriaB);
+// console.log(Object.keys(despesasMensais));
 
 function calcularDespesas(lista) {
   const transformando = Object.keys(lista); //p/ Transformar OBJETO ==> ARRAY de STRINGS
@@ -100,6 +100,14 @@ function obterMesAtua2(lista) {
   }
 }
 console.log(obterMesAtua2(meses));
+
+console.log('EX3 C) ------------------------------------------SEM LOOP');
+
+function obterMesAtua3(lista) {
+  const data = new Date();
+  return lista[data.getMonth()];
+}
+console.log(obterMesAtua3(meses));
 
 console.log('Fim EX3----------------------------------------------------------------------------');
 
@@ -277,32 +285,109 @@ console.log(gerarRelatorio3(aporte4, juros4, prazo4, despesasMensais, metaInvest
 console.log(
   'EX4 D) OBJETO COMPLEXO (múltiplos meses e objeto aninhado.) ----------------------------------------------------------------------------'
 );
-const despesasMensais4B = {
-  janeiro: {
+const despesasMensais4D = {
+  maio: {
     carro: 300,
     mercado: 500,
     aluguel: 1200,
   },
-  fevereiro: {
-    carro: 300,
+  junho: {
+    carro: 600,
     mercado: 600,
     aluguel: 1200,
   },
-  marco: {
-    carro: 300,
-    mercado: 550,
+  juho: {
+    carro: 800,
+    mercado: 750,
     aluguel: 1200,
   },
 };
 
-// Requisito 5: Estrutura de Dados para Despesas
-// ❖ Crieumobjeto para armazenar as despesas mensais, utilizando categorias como alimentação, transporte, aluguel e lazer.
-// ❖ Oobjeto deve permitir fácil acesso e modificação dos valores das despesas.
+function gerarRelatorio4(aporte, juros, prazo, despesas, despesasPorCat, metaInv, metaOrc, ListaMeses) {
+  let relatorio = '';
+  const meses = Object.keys(despesasPorCat);
+  relatorio += `Relatório financeiro:\n`;
+  const investimento = simularInvestimentoJC1(aporte, juros, prazo);
+  const despesasTotais = calcularDespesas(despesas);
+  const nomeMes = ListaMeses[new Date().getMonth()];
 
+  // Pegando investimento
+  if (investimento >= metaInv) {
+    relatorio += ` 1) Investimentos:\n Mês: ${nomeMes}. Aporte inicial: ${aporte.toFixed(2)}. Juros: ${juros.toFixed(2)}% a.m. Saldo final: ${investimento.toFixed(2)}. Meta: ${metaInv.toFixed(2)}. Meta atingida\n`;
+  } else {
+    relatorio += ` 1) Investimentos:\n Mês: ${nomeMes}. Aporte inicial: ${aporte.toFixed(2)}. Juros: ${juros.toFixed(2)}% a.m. Saldo final: ${investimento.toFixed(2)}. Meta: ${metaInv.toFixed(2)}. Meta não atingida\n`;
+  }
+
+  // Pegando gastos totais
+  if (despesasTotais <= metaOrc) {
+    relatorio += ` 2) Despesas:\n Mes: ${nomeMes} Despesas totais: ${despesasTotais.toFixed(2)}. Meta orçamento: ${metaOrc.toFixed(2)}. Meta atingida\n`;
+  } else {
+    relatorio += ` 2) Despesas:\n Mes: ${nomeMes} Despesas totais: ${despesasTotais.toFixed(2)}. Meta orçamento: ${metaOrc.toFixed(2)}. Meta não atingida\n`;
+  }
+
+  // Despesas por categoria I)
+  relatorio += ` 3) Despesas por categoria:\n`;
+  for (let i = 0; i < meses.length; i++) {
+    // console.log(despesasCat[meses[i]]); //PRINT ==>Mostra o objeto correspondente ao mês. (carro: 300, mercado: 500, aluguel: 1200 })
+    // console.log(meses[i]); //PRINT ==>Mostra os itens do ARRAY que são os meses
+    relatorio += `${meses[i]}\n`;
+
+    const categorias = Object.keys(despesasPorCat[meses[i]]); //Transforma o objeto do mês, e não o objeto principal.//Buscamos as propriedades do mês atual.
+
+    // Despesas por categoria II)
+    for (let j = 0; j < categorias.length; j++) {
+      // console.log(categorias[j]); //Percorre as PROP de cada MÊS
+      const valorCategoria = despesasPorCat[meses[i]][categorias[j]];
+      // console.log(valorCategoria);
+      // console.log(`Mês: ${meses[i]}. Categoria: ${categorias[j]}. Valor: ${valorCategoria}`);
+      relatorio += ` Categoria: ${categorias[j]}. Valor: ${valorCategoria}\n`;
+    }
+  }
+  relatorio += ` Fim relatório`;
+  return relatorio;
+}
+
+console.log(gerarRelatorio4(aporte4, juros4, prazo4, despesasMensais, despesasMensais4D, metaInvestimento4, metaOrcamento4, meses4));
+
+console.log('Fim EX4----------------------------------------------------------------------------');
+
+// console.log('TESTE OBJETO --------------------------------------------------------------------------------');
+
+// // console.log(Object.keys(despesasMensais4D)); //(1) PRINT prop OBJETO  (maio, junho, julho)
+
+// // const mesesTESTE = Object.keys(despesasMensais4D); //CONST que print PROPRIEDADES do OBJETO (maio, junho, julho)
+// // console.log(mesesTESTE); //(2)print CONST (maio, junho, julho)
+// // console.log(mesesTESTE[0]); //(3)print apenas PROP[0] ==> MAIO
+
+// // console.log(despesasMensais4D[mesesTESTE[0]]); //(4)Pega o OBJETO/ pega as PROP (meses)/ print o que corresponde ao mês 0 (MAIO) ==>300/500/1200
+
+// // const categoriasTeste = Object.keys(despesasMensais4D[mesesTESTE[0]]); //CONST que: 1) Pega OBJETO/ 2) busca meses /3)busca o que corresponde à POS 0 (maio), mas apenas pega as PROPRIEDADES (keys)
+
+// // console.log(categoriasTeste); // ( 5)PRINT CONST acima
+
+// // console.log(categoriasTeste[0]); // (6) PRINT apenas a 1º PROP do OBJETO (carro)
+
+// // console.log(despesasMensais4D[mesesTESTE[0]][categoriasTeste[0]]); //(7) 1)Pega OBJETO/ 2)busca PROP (meses) POS (0)=maio //3)busca o que está dentro dessa POS 0 correspondente à maio () ==>300
+
+// console.log('FIM TESTE OBJETO --------------------------------------------------------------------------------');
+
+// Requisito 5: Estrutura de Dados para Despesas
+// ❖ Crie um objeto para armazenar as despesas mensais, utilizando categorias como alimentação, transporte, aluguel e lazer.
+// ❖ O objeto deve permitir fácil acesso e modificação dos valores das despesas.
+console.log('EX5 -Versão simples (Mês ÚNICO');
+const despesasMensais5 = {
+  alimentacao: 800,
+  transporte: 300,
+  aluguel: 1200,
+  lazer: 200,
+};
+console.log('Fim EX5----------------------------------------------------------------------------');
 // Requisito 6: Entradas e Configurações do Investimento
 // ❖ Defina variáveis para armazenar o valor inicial do investimento, a taxa mensal de rendimento, a duração do investimento em meses, a meta de investimento e a meta de orçamento mensal.
-// ❖ Asvariáveis devem ser configuráveis para permitir diferentes simulações financeiras.
+// ❖ As variáveis devem ser configuráveis para permitir diferentes simulações financeiras.
 
+console.log('Fim EX6----------------------------------------------------------------------------');
 // Requisito 7: Execução do Relatório
-// ❖ Chameafunção gerarRelatorio com os parâmetros adequados para gerar e exibir o relatório financeiro no console.
-// ❖ Achamadadeveutilizar as variáveis e objetos definidos anteriormente
+// ❖ Chame a função gerarRelatorio com os parâmetros adequados para gerar e exibir o relatório financeiro no console.
+// ❖ A chamada deve utilizar as variáveis e objetos definidos anteriormente
+console.log('Fim EX7----------------------------------------------------------------------------');
