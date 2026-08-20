@@ -980,4 +980,541 @@ function analisarVendasC(lista) {
 }
 console.log(analisarVendasC(vendasF42));
 
-('Fim EX2------------------------------------------------------------------------------------------------------');
+console.log('Fim EX2------------------------------------------------------------------------------------------------------');
+
+// 🔴 FASE 4 — EX3
+// Funcionários e salários
+// Temos:
+const funcionariosF43 = [
+  { nome: 'Ana', setor: 'TI', salario: 8500, ativo: true },
+  { nome: 'Carlos', setor: 'Financeiro', salario: 6200, ativo: true },
+  { nome: 'Mariana', setor: 'TI', salario: 9200, ativo: false },
+  { nome: 'Pedro', setor: 'RH', salario: 5800, ativo: true },
+  { nome: 'Julia', setor: 'TI', salario: 7800, ativo: true },
+];
+// Crie:
+// function analisarFuncionarios(lista)
+// que retorne um novo array contendo somente os funcionários ativos da TI, mas em um formato simplificado:
+// [
+//   'Ana - R$8500.00',
+//   'Julia - R$7800.00'
+// ]
+
+console.log('EX3 A) Mais fácil');
+function analisarFuncionarios(lista) {
+  let novo = [];
+  for (let i = 0; i < lista.length; i++) {
+    if (lista[i].setor === 'TI' && lista[i].ativo) {
+      novo.push(`${lista[i].nome} - R$${lista[i].salario.toFixed(2)}`);
+    }
+  }
+  return novo;
+}
+console.log(analisarFuncionarios(funcionariosF43));
+
+console.log('EX3 B) FILTER + MAP');
+
+const novo = funcionariosF43.filter((p) => p.setor === 'TI' && p.ativo === true);
+
+const transformar = novo.map((p) => p.nome + '  - ' + 'R$' + p.salario.toFixed(2));
+console.log(transformar);
+
+console.log('Fim EX3------------------------------------------------------------------------------------------------------');
+
+// 🔴 EX4 — Média dos funcionários ativos
+// Temos:
+const funcionariosF44 = [
+  { nome: 'Ana', salario: 8500, ativo: true },
+  { nome: 'Carlos', salario: 6200, ativo: true },
+  { nome: 'Mariana', salario: 9200, ativo: false },
+  { nome: 'Pedro', salario: 5800, ativo: true },
+  { nome: 'Julia', salario: 7800, ativo: true },
+];
+// Crie: function mediaSalariosAtivos(lista)
+// que retorne: 7075.00
+
+console.log('EX4 A) Função com IF');
+function mediaSalariosAtivos(lista) {
+  let media = 0;
+  let count = 0;
+  for (let i = 0; i < lista.length; i++) {
+    if (lista[i].ativo) {
+      media += lista[i].salario;
+      count++;
+    }
+  }
+  return (media / count).toFixed(2);
+}
+console.log(mediaSalariosAtivos(funcionariosF44));
+
+console.log('EX4 B) Filter + REDUCE');
+const filtrarFuncionarios = funcionariosF44.filter((p) => p.ativo);
+
+const mediaFuncionariosAtivos = filtrarFuncionarios.reduce((acc, n) => acc + n.salario, 0);
+console.log(mediaFuncionariosAtivos);
+
+console.log((mediaFuncionariosAtivos / filtrarFuncionarios.length).toFixed(2));
+
+console.log('Fim EX4------------------------------------------------------------------------------------------------------');
+
+// 😈 EX5 — agora vamos misturar tudo
+// Temos:
+const pedidosF45 = [
+  {
+    cliente: 'Ana',
+    status: 'entregue',
+    valor: 250,
+  },
+  {
+    cliente: 'Carlos',
+    status: 'pendente',
+    valor: 400,
+  },
+  {
+    cliente: 'Ana',
+    status: 'entregue',
+    valor: 150,
+  },
+  {
+    cliente: 'Pedro',
+    status: 'entregue',
+    valor: 500,
+  },
+  {
+    cliente: 'Carlos',
+    status: 'entregue',
+    valor: 300,
+  },
+];
+// Crie: function totalPedidosEntregues(lista)
+// que retorne:
+// {
+//   Ana: 400,
+//   Pedro: 500,
+//   Carlos: 300
+// }
+console.log('EX5 A) Solução com função + for');
+function totalPedidosEntregues(lista) {
+  let base = [
+    {
+      cliente: 'Ana',
+      valor: 0,
+    },
+    {
+      cliente: 'Carlos',
+      valor: 0,
+    },
+    {
+      cliente: 'Pedro',
+      valor: 0,
+    },
+  ];
+  let novaBase = {};
+
+  for (let i = 0; i < lista.length; i++) {
+    for (let j = 0; j < base.length; j++) {
+      if (base[j].cliente === lista[i].cliente) {
+        if (lista[i].status === 'entregue') {
+          if (novaBase[base[j].cliente]) {
+            novaBase[base[j].cliente] += lista[i].valor;
+          } else {
+            novaBase[base[j].cliente] = lista[i].valor;
+          }
+        }
+      }
+    }
+  }
+  return novaBase;
+}
+console.log(totalPedidosEntregues(pedidosF45));
+
+console.log(
+  'EX5 B) Solução com FILTER +                   REDUCE-------------------------------------------------------------------------------------'
+);
+const filtrarClientesEx5 = pedidosF45.filter((p) => p.status === 'entregue');
+
+function agregarClientesEx5sole(lista) {
+  return lista.reduce((acc, base) => {
+    if (acc[base.cliente]) {
+      acc[base.cliente] += base.valor;
+    } else {
+      acc[base.cliente] = base.valor;
+    }
+    return acc;
+  }, {});
+}
+console.log(agregarClientesEx5sole(filtrarClientesEx5));
+
+console.log('Fim EX5------------------------------------------------------------------------------------------------------');
+
+// 🔴 EX6 — agora vou tirar uma das suas "muletas"
+// Agora teremos objeto dentro de objeto + array, e você vai precisar percorrer essa estrutura.
+const empresaF46 = {
+  nome: 'Tech Solutions',
+  funcionarios: [
+    {
+      nome: 'Ana',
+      setor: 'TI',
+      salario: 8500,
+      ativo: true,
+    },
+    {
+      nome: 'Carlos',
+      setor: 'Financeiro',
+      salario: 6200,
+      ativo: true,
+    },
+    {
+      nome: 'Mariana',
+      setor: 'TI',
+      salario: 9200,
+      ativo: false,
+    },
+  ],
+};
+
+// Crie: function analisarEmpresa(empresa)
+// que retorne:
+// {
+//   nome: 'Tech Solutions',
+//   funcionariosAtivos: 2,
+//   folhaSalarial: 14700
+// }
+console.log('EX6 A) Solução com função + for');
+
+function analisarEmpresa(lista) {
+  let resultado = {
+    nome: lista.nome,
+    functionariosAtivos: 0,
+    folhaSalarial: 0,
+  };
+  for (let i = 0; i < lista.funcionarios.length; i++) {
+    if (lista.funcionarios[i].ativo) {
+      resultado.functionariosAtivos += 1;
+      resultado.folhaSalarial += lista.funcionarios[i].salario;
+    }
+  }
+
+  return resultado;
+}
+console.log(analisarEmpresa(empresaF46));
+
+console.log(
+  'EX6 B) Solução com FILTER +                   REDUCE - SEM função-------------------------------------------------------------------------------------'
+);
+
+//Filtra funcionários ativos
+const filtrarFuncionarisAtivosEx6 = empresaF46.funcionarios.filter((p) => p.ativo);
+
+//Soma salário
+const FolhaSalarioEx6 = filtrarFuncionarisAtivosEx6.reduce((acc, n) => acc + n.salario, 0);
+
+//Cria objeto
+let objetoFinal = {
+  nome: empresaF46.nome,
+  funcionariosAtivos: filtrarFuncionarisAtivosEx6.length,
+  folhaSalarial: FolhaSalarioEx6,
+};
+console.log(objetoFinal);
+
+console.log(
+  'EX6 C) Solução com FILTER +                   REDUCE - DENTRO da função-------------------------------------------------------------------------------------'
+);
+function analisarEmpresaC(lista) {
+  const filtrar = lista.funcionarios.filter((p) => p.ativo);
+  const somarSalarios = filtrar.reduce((acc, n) => acc + n.salario, 0);
+  let objetoFinal = {
+    nome: lista.nome,
+    funcionariosAtivos: filtrar.length,
+    folhaSalarial: somarSalarios,
+  };
+  return objetoFinal;
+}
+console.log(analisarEmpresaC(empresaF46));
+
+console.log(
+  'EX6 D) Solução com FILTER +                   REDUCE - DENTRO da função ==>Criar objeto com REDUCE-------------------------------------------------------------------------------------'
+);
+function analisarEmpresaD(lista) {
+  const filtrar = lista.funcionarios.filter((p) => p.ativo);
+  return filtrar.reduce(
+    (acc, base) => {
+      acc.funcionariosAtivos += 1;
+      acc.folhaSalarial += base.salario;
+      return acc;
+    },
+    { nome: lista.nome, funcionariosAtivos: 0, folhaSalarial: 0 }
+  );
+}
+
+console.log(analisarEmpresaD(empresaF46));
+
+console.log('Fim EX5------------------------------------------------------------------------------------------------------');
+console.log('Fim FASE4-----------------------------------------------------------------------------------------------------');
+
+// 🟢 FASE 5 — EX1
+// Temos:
+const produtosF51 = [
+  { nome: 'Notebook', categoria: 'Eletrônicos', preco: 3000, estoque: 5 },
+  { nome: 'Mouse', categoria: 'Eletrônicos', preco: 100, estoque: 20 },
+  { nome: 'Mesa', categoria: 'Móveis', preco: 800, estoque: 3 },
+  { nome: 'Cadeira', categoria: 'Móveis', preco: 600, estoque: 0 },
+  { nome: 'Teclado', categoria: 'Eletrônicos', preco: 200, estoque: 10 },
+];
+// Crie: function analisarEstoque(lista)
+// // que retorne:
+// {
+//   produtosDisponiveis: 4,
+//   valorTotalEstoque: 16200
+// }
+
+console.log('EX1 A)Solução com FOR');
+
+function analisarEstoque(lista) {
+  let disponiveis = 0;
+  let valorTotal = 0;
+  let novoObjeto = { disponiveis, valorTotal };
+  for (let i = 0; i < lista.length; i++) {
+    if (lista[i].estoque > 0) {
+      disponiveis++;
+      novoObjeto.disponiveis = disponiveis;
+      valorTotal += lista[i].preco * lista[i].estoque;
+      novoObjeto.valorTotal = valorTotal;
+    }
+  }
+  return novoObjeto;
+}
+
+console.log(analisarEstoque(produtosF51));
+
+console.log('EX1 B)Solução com -----------------------------------------------FILTER + -REDUCE SEM função-----------');
+
+const filtrarEstoqueF51 = produtosF51.filter((p) => p.estoque > 0);
+
+const somarEstoqueF51 = filtrarEstoqueF51.reduce((acc, n) => acc + n.preco * n.estoque, 0);
+
+let novoObjetoF51 = {
+  produtosDisponiveis: filtrarEstoqueF51.length,
+  valorTotalEstoque: somarEstoqueF51,
+};
+
+console.log(novoObjetoF51);
+
+console.log('EX1 C)Solução com -----------------------------------------------FILTER + -REDUCE COM função-----------');
+
+function analisarEstoqueC(lista) {
+  const filtrar = lista.filter((p) => p.estoque > 0);
+  const somarEstoque = filtrar.reduce((acc, n) => acc + n.preco * n.estoque, 0);
+  let novoObjeto = {
+    produtosDisponiveis: filtrar.length,
+    valorTotalEstoque: somarEstoque,
+  };
+  return novoObjeto;
+}
+
+console.log(analisarEstoqueC(produtosF51));
+
+console.log('EX1 D)Solução com -----------------------------------------------FILTER +  --Criar objeto com REDUCE-----------');
+
+function analisarEstoqueD(lista) {
+  const filtrar = lista.filter((p) => p.estoque > 0);
+  return filtrar.reduce(
+    (acc, base) => {
+      acc.produtosDisponiveis += 1;
+      acc.valorTotalEstoque += base.preco * base.estoque;
+      return acc;
+    },
+    {
+      produtosDisponiveis: 0,
+      valorTotalEstoque: 0,
+    }
+  );
+}
+console.log(analisarEstoqueD(produtosF51));
+
+console.log('Fim FASE5-----------------------------------------------------------------------------------------------------');
+
+// 🚀 FASE 6 — EX1
+// Dados
+const vendasF61 = [
+  { vendedor: 'Ana', valor: 1200 },
+  { vendedor: 'Carlos', valor: 800 },
+  { vendedor: 'Ana', valor: 600 },
+  { vendedor: 'Pedro', valor: 1500 },
+  { vendedor: 'Carlos', valor: 900 },
+  { vendedor: 'Ana', valor: 700 },
+];
+// Crie:
+// function analisarVendas(lista)
+// que retorne um objeto neste formato:
+// {
+//   totalVendas: 5700,
+//   maiorVenda: 1500,
+//   vendedorMaiorVenda: 'Pedro'
+// }
+
+console.log('EX1 A) Solução com OBJETO + FOR');
+function analisarVendasF6E1(lista) {
+  let novo = { totalVendas: 0, maiorVenda: 0, vendedorMaiorVenda: '' };
+
+  for (let i = 0; i < lista.length; i++) {
+    novo.totalVendas += lista[i].valor;
+    if (lista[i].valor > novo.maiorVenda) {
+      novo.maiorVenda = lista[i].valor;
+      novo.vendedorMaiorVenda = lista[i].vendedor;
+    }
+  }
+  return novo;
+}
+
+console.log(analisarVendasF6E1(vendasF61));
+
+console.log('EX1 B) Solução com --------------------------------------------------------------------------OBJETO + REDUCE');
+
+function analisarVendasF6E1B(lista) {
+  return lista.reduce(
+    (acc, base) => {
+      acc.totalVendas += base.valor;
+      if (base.valor > acc.maiorVenda) {
+        acc.maiorVenda = base.valor;
+        acc.vendedorMaiorVenda = base.vendedor;
+      }
+      return acc;
+    },
+    { totalVendas: 0, maiorVenda: 0, vendedorMaiorVenda: '' }
+  );
+}
+console.log(analisarVendasF6E1B(vendasF61));
+
+console.log('Fim EX1-----------------------------------------------------------------------------------------------------');
+// 🚀 FASE 6 — EX2
+// Temos:
+const funcionariosF62 = [
+  { nome: 'Ana', setor: 'TI', salario: 7000, ativo: true },
+  { nome: 'Carlos', setor: 'RH', salario: 5000, ativo: true },
+  { nome: 'Pedro', setor: 'TI', salario: 8000, ativo: false },
+  { nome: 'Marina', setor: 'TI', salario: 6000, ativo: true },
+  { nome: 'João', setor: 'RH', salario: 4500, ativo: false },
+  { nome: 'Lucas', setor: 'TI', salario: 9000, ativo: true },
+];
+// Crie:
+// function analisarSetorTI(lista)
+// que retorne:
+// {
+//   funcionariosAtivos: 3,
+//   folhaSalarial: 22000,
+//   maiorSalario: 9000,
+//   funcionarioMaiorSalario: 'Lucas'
+// }
+console.log('EX2 A) Solução com OBJETO + FOR');
+function analisarSetorTiF6E2(lista) {
+  let novo = {
+    funcionariosAtivos: 0,
+    folhaSalarial: 0,
+    maiorSalario: 0,
+    funcionarioMaiorSalario: '',
+  };
+  for (let i = 0; i < lista.length; i++) {
+    if (lista[i].setor === 'TI' && lista[i].ativo) {
+      novo.funcionariosAtivos++;
+      novo.folhaSalarial += lista[i].salario;
+      if (novo.maiorSalario <= lista[i].salario) {
+        novo.maiorSalario = lista[i].salario;
+        novo.funcionarioMaiorSalario = lista[i].nome;
+      }
+    }
+  }
+  return novo;
+}
+
+console.log(analisarSetorTiF6E2(funcionariosF62));
+
+console.log('EX2 B) Solução com -------------------------------FILTER + REDUCE');
+function analisarSetorTiF6E2B(lista) {
+  const filtrar = lista.filter((p) => p.setor === 'TI' && p.ativo);
+
+  return filtrar.reduce(
+    (acc, base) => {
+      acc.funcionariosAtivos++;
+      acc.folhaSalarial += base.salario;
+      if (base.salario > acc.maiorSalario) {
+        acc.maiorSalario = base.salario;
+        acc.funcionarioMaiorSalario = base.nome;
+      }
+
+      return acc;
+    },
+    { funcionariosAtivos: 0, folhaSalarial: 0, maiorSalario: 0, funcionarioMaiorSalario: '' }
+  );
+}
+
+console.log(analisarSetorTiF6E2B(funcionariosF62));
+
+console.log('FIM EX2-----------');
+
+// 🧠 EX3 — Análise de vendas por categoria
+// Você recebeu a seguinte lista:
+const vendasF63 = [
+  { produto: 'Notebook', categoria: 'Eletrônicos', preco: 3500, quantidade: 2 },
+  { produto: 'Mouse', categoria: 'Eletrônicos', preco: 120, quantidade: 5 },
+  { produto: 'Teclado', categoria: 'Eletrônicos', preco: 250, quantidade: 3 },
+  { produto: 'Cadeira', categoria: 'Móveis', preco: 900, quantidade: 2 },
+  { produto: 'Mesa', categoria: 'Móveis', preco: 1200, quantidade: 1 },
+  { produto: 'Luminária', categoria: 'Casa', preco: 180, quantidade: 4 },
+  { produto: 'Tapete', categoria: 'Casa', preco: 350, quantidade: 2 },
+  { produto: 'Monitor', categoria: 'Eletrônicos', preco: 1800, quantidade: 2 },
+];
+// Sua função deverá se chamar:
+// analisarVendasF6E2(lista)
+// E deverá retornar um objeto com:
+// {
+//   faturamentoTotal: 0,
+//   produtoMaisVendido: '',
+//   quantidadeMaisVendida: 0,
+//   categoriaMaiorFaturamento: ''
+// }
+
+console.log('EX3 A) Solução com FOR');
+function analisarVendasF6E3(lista) {
+  let novo = {
+    faturamentoTotal: 0,
+    produtoMaisVendido: '',
+    quantidadeMaisVendida: 0,
+    categoriaMaiorFaturamento: '',
+  };
+
+  let categorias = {
+    Eletrônicos: 0,
+    Móveis: 0,
+    Casa: 0,
+  };
+
+  // calcular faturamento por categoria
+  for (let j = 0; j < lista.length; j++) {
+    categorias[lista[j].categoria] += lista[j].preco * lista[j].quantidade;
+  }
+
+  // Calcular maior categoria                    // FOR OF --------------------------------------
+  let maiorFaturamento = 0;
+
+  for (const [categoria, valor] of Object.entries(categorias)) {
+    if (valor > maiorFaturamento) {
+      maiorFaturamento = valor;
+      novo.categoriaMaiorFaturamento = categoria;
+    }
+  }
+
+  // Calcular qtd + vendida e produto + vendido
+  for (let i = 0; i < lista.length; i++) {
+    novo.faturamentoTotal += lista[i].preco * lista[i].quantidade;
+
+    if (lista[i].quantidade > novo.quantidadeMaisVendida) {
+      novo.quantidadeMaisVendida = lista[i].quantidade;
+      novo.produtoMaisVendido = lista[i].produto;
+    }
+  }
+  // return { novo, categorias };                    // Retornar + de um OBJETO
+  return novo;
+}
+
+console.log(analisarVendasF6E3(vendasF63));

@@ -1,0 +1,38 @@
+body {
+  background-color: rgb(205, 230, 255);
+  padding: 0px;
+}
+
+body > div {
+  background-color: rgb(49, 226, 43);
+  border: 3px solid black;
+  margin: 15px;
+  padding: 8px;
+  color: blue;
+  border-radius: 20px;
+  transform: rotate(1deg);
+}
+
+#div-conteudo-1 {
+  background-color: brown;
+}
+
+.destaque {
+  color: blue;
+}
+
+#h4-conteudo4 {
+  color: brown;
+}
+
+button {
+  background-color: aquamarine;
+  color: rgb(42, 165, 132);
+  padding: 10;
+  margin-bottom: 20px;
+  border: 10px solid red;
+}
+
+button:hover {
+  background-color: blue;
+}
