@@ -19,7 +19,7 @@
     <p id="teste2">Muda apenas essa cor 2</p>
     <!--hover + id-->
 
-    <p onmouseover="this.style.color = 'green'" onmouseout="this.style.color = 'black'">Muda com onmouseover</p>
+    <p onmouseover="this.style.color = 'green'" onmouseout="this.style.color = 'black'">Muda com onmouseover no HTML</p>
     <!--Usando direto no HTML-->
 
     <p id="testeScript" onmouseover="mudarCor()" onmouseout="voltarCor()">Muda apenas essa cor - 2 FUNÇÕES</p>
@@ -28,7 +28,10 @@
     <p id="testeScript1" onmouseover="mudarEVoltarCor('grey')" onmouseout="mudarEVoltarCor('black')">Muda apenas essa cor -1 FUNÇÃO</p>
     <!--Usando 1 FUNÇÃO do script-->
 
-    <!--FIM Exercício 1-->
+    <p id="hashtag" onmouseover="mudarCorhashTag('hashtag', 'red')" onmouseout="mudarCorhashTag('hashtag', 'black')">Muda cor HASHTAG</p>
+    <!-- Solução HASHTAG -->
+
+    <!--FIM Exercício 1 --------------------------------------------------------------------------------------------->
 
     <!--Exercício 2: Exibição de alerta ao clicar em um botão-->
 
@@ -44,13 +47,47 @@
     <button id="testeScript3" onclick="msgAlerta()">Clique aqui 4</button>
     <!--Usando script            CERTO!!!-->
 
-    <!--FIM Exercício 2-->
+    <!--FIM Exercício 2 ------------------------------------------------------------------------------------------------>
 
     <!--Exercício 3: Mostrar mensagem ao focar e desfocar um campo de
 entrada-->
 
-    <input type="text" placeholder="Digite aqui" />
-    <img src="imagem1.png" alt="Imagem misteriosa" />
+    <input id="INPUT1" type="text" onfocus="this.value = 'Campo em foco'" onblur="this.value = ' '" placeholder="Digite aqui 1" />
+    <!-- Usando direto no HTML -->
+
+    <input id="INPUT2" type="text" onfocus="comFoco()" onblur="tirarFoco()" placeholder="Digite aqui 2" />
+    <!-- Usando 2 FUNÇÕES do script -->
+
+    <input id="INPUT3" type="text" onfocus="comESemFoco('Campo em foco')" onblur="comESemFoco(' ')" placeholder="Digite aqui 3" />
+    <!-- Usando 1 FUNÇÕES do script -->
+
+    <!--FIM Exercício 3 -------------------------------------------------------------------------------------------------->
+
+    <!-- Exercício 4: Alteração de imagem ao passar o mouse sobre ela -->
+    <!-- <img src="imagem1.png" alt="Imagem misteriosa" /> -->
+
+    <img
+      id="imagemMisteriosa"
+      src="imagem1.png"
+      alt="Imagem misteriosa"
+      onmouseover="this.src = 'imagem2.png'"
+      onmouseout="this.src = 'imagem1.png'"
+    />
+    <!-- Usando direto no HTML -->
+
+    <img id="imagemMisteriosa1" src="imagem1.png" alt="Imagem misteriosa1" onmouseover="mudarImagem()" onmouseout="voltarImagem()" />
+    <!-- Usando 2 FUNÇÕES do script -->
+
+    <img
+      id="imagemMisteriosa2"
+      src="imagem1.png"
+      alt="Imagem misteriosa1"
+      onmouseover="mudarEVoltarImagem('imagem2.png')"
+      onmouseout="mudarEVoltarImagem('imagem1.png')"
+    />
+    <!--Usando 1 FUNÇÕES do script  -->
+
+    <!--FIM Exercício 4-->
 
     <script src="Ex1_script.js"></script>
     <!--Importa script -->

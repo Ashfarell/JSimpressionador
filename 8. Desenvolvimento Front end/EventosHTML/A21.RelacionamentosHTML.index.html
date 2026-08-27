@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Percorrendo o DOM</title>
+    <link rel="stylesheet" href="A21.RelacionamentosHTML.style.css"
+  </head>
+  <body>
+
+<div id="avô">
+<div id="pai">
+  <P>Primeiro filho</P>
+  <P>Segundo filho</P>
+  <P>Terceiro filho</P>
+  <P>Quarto filho</P>
+</div>
+
+<div id="tio">Este é o tio!</div>
+</div>
+
+<script>
+// Ober o elemento pai
+let pai = document.getElementById('pai')
+
+// Acessar o parenNode avô
+let avo = pai.parentNode
+// console.log(avo)
+
+// Acessar o parenNode Pai pelos filho
+let filhosParagrafo = document.querySelector("p");
+let paiAtravesFilhos =filhosParagrafo.parentNode;
+// console.log(paiAtravesFilhos)
+
+// Acessar os nós filhos usando childNodes ==>gera NodeList
+let filhosChildNodes = pai.childNodes
+// console.log(filhosChildNodes)
+
+
+// Acessar os nós filhos usando children -Exclui nós de textos e nós de comentários ==>gera HTML Collection
+let filhosChildren = pai.children
+// console.log(filhosChildren)
+
+// Acessar o primeiro filho usando firstChild   -->Requer "Element", caso contrário n/ funciona
+let primeiroFilho = pai.firstElementChild
+console.log(primeiroFilho)
+
+// Acessar o último filho usando lastChild      -->Requer "Element"
+let ultimofilho = pai.lastElementChild
+console.log(ultimofilho)
+
+ // Acessar o próximo irmão usando nextSibling   -->Requer "Element"
+ let proximoIrmao = primeiroFilho.nextElementSibling
+ console.log(proximoIrmao)
+
+ // Acessar o irmão anterior usando o previousSibling
+ let irmaoAnterior = ultimofilho.previousElementSibling
+ console.log(irmaoAnterior)
+
+//  Acessar o tio usando nextElementSibling
+let tio = pai.nextElementSibling
+console.log(tio)
+ 
+ // Acessar o pai usando previousElementSibling
+ let paiPrevious = tio.previousElementSibling
+ console.log(paiPrevious)
+
+ // Acessar apenas os elementos, sem pegar espaços em branco nodeType
+
+ let tioElemento = pai.nextSibling
+ console.log(tioElemento)
+
+ while(tioElemento.nodeType !==1){
+    tioElemento = tioElemento.nextSibling
+ }
+  console.log( 'Elemento tio: ',tioElemento)
+
+
+</script>
+
+
+
+  </body>
+</html>
