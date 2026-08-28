@@ -65,19 +65,23 @@ removendo qualquer estilo de contorno (outline) padrão do navegador.
 Passo a passo para implementar a funcionalidade do To-Do List em JavaScript:
 
 Passo 1- Selecionar elementos HTML:
-Acesse os elementos HTML com os quais você deseja interagir no JavaScript. Neste caso, são o campo de entrada (taskInput), a lista de tarefas (taskList).
+Acesse os elementos HTML com os quais você deseja interagir no JavaScript. 
+Neste caso, são o campo de entrada (taskInput), a lista de tarefas (taskList).
 
 Os PASSOS 2 AO 8 SERÃO IMPLEMENTADOS DENTRO DA FUNÇÃO addTask().
 
 Passo 2 - Criar a função addTask():
 Dentro desta função, obtenha o valor digitado no campo de entrada (taskInput.value).
-Verifique se o campo não está vazio antes de prosseguir. Se estiver vazio, exiba um alerta solicitando a inserção de uma tarefa.
+Verifique se o campo não está vazio antes de prosseguir. 
+Se estiver vazio, exiba um alerta solicitando a inserção de uma tarefa.
 
-Passo 3 - Criar um novo elemento de lista (<li>) para a tarefa e Atribua o texto inserido no campo de entrada como conteúdo deste novo elemento de lista.
+Passo 3 - Criar um novo elemento de lista (<li>) para a tarefa e Atribua 
+o texto inserido no campo de entrada como conteúdo deste novo elemento de lista.
 
 Passo 4 - Adicionar um botão de remoção:
 - Crie um botão para remover a tarefa recém-adicionada.
-- Atribua um texto, por exemplo, "Remover", para o botão (removeButton.textContent = "Remover").
+- Atribua um texto, por exemplo, "Remover", 
+para o botão (removeButton.textContent = "Remover").
 
 Passo 5 - Implementar a ação de remoção:
 - Defina um evento de clique para o botão de remoção (removeButton.onclick).
@@ -91,8 +95,10 @@ Passo 7 -  Limpar o campo de entrada:
 - Após adicionar a tarefa à lista, limpe o campo de entrada (taskInput.value = "").
 
 Passo 8 - Lidar com tarefas vazias:
-Caso o campo de entrada esteja vazio no momento de adicionar, exiba um alerta pedindo para inserir uma tarefa.
+Caso o campo de entrada esteja vazio no momento de adicionar, 
+exiba um alerta pedindo para inserir uma tarefa.
 
 Passo 9 -  Testar a funcionalidade:
-Teste sua implementação interagindo com o campo de entrada, adicionando tarefas e removendo-as utilizando o botão de remoção.
+Teste sua implementação interagindo com o campo de entrada, 
+adicionando tarefas e removendo-as utilizando o botão de remoção.
 

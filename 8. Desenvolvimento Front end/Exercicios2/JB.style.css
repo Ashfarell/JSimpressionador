@@ -1,4 +1,58 @@
+body {
+  background-color: aliceblue;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
 #container {
-  background-color: blueviolet;
-  font-size: large;
+  margin: 30px auto;
+  padding: 20px;
+  max-width: 500px;
+  border: 1px solid blue;
+  border-radius: 30px;
+}
+
+#tasklist {
+  list-style: none;
+  padding: 0;
+}
+
+button {
+  background-color: aqua;
+  color: black;
+  padding: 10px;
+  border-radius: 37px;
+  cursor: pointer;
+  font-size: small;
+  float: right;
+}
+
+button:hover {
+  background-color: red;
+}
+
+button:focus {
+  outline: none;
+}
+
+#remover {
+  background-color: red;
+  color: black;
+  padding: 10px;
+  border-radius: 37px;
+  cursor: pointer;
+  font-size: small;
+  width: 100px;
+  margin-left: 20px;
+}
+
+#remover:hover {
+  background-color: white;
+}
+
+li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
