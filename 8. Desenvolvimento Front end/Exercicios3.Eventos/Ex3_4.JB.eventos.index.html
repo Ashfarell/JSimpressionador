@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>EX4 -Prevenir Rolagem para Baixo e Remover Event Listener</title>
+
+    <style>
+      body {
+        height: 2000px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Prevenir Rolagem para Baixo e Remover Event Listener</h1>
+
+    <script>
+      // Contagem "ArrowDown"
+      let contarArrowDown = 0;
+
+      document.addEventListener('keydown', contarArrow); //Verifica teclas clicadas na página  ==>chama FUNÇÃO
+
+      //Incrementar VAR e chamar função preventScroll
+      function contarArrow(event) {
+        if (event.key === 'ArrowDown') {
+          contarArrowDown++;
+          console.log(contarArrowDown);
+          preventScroll(event);
+        }
+      }
+
+      //   N/ rola página p/ baixo
+      function preventScroll(event) {
+        console.log('função chamada hehe');
+        event.preventDefault();
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Prevent Default - addEventListener()</title>
+  </head>
+  <body>
+    <h1>Prevent Default</h1>
+
+    <a href="https://www.google.com/" id="meuLink"> Clique aqui para acessar </a>
+
+    <script>
+      //     <!-- Seleciona o elemento link (ANCORA) -->
+      const link = document.getElementById('meuLink');
+
+      // Adicionar um evento de clique ao LINK
+      //   USANDO ID!
+      meuLink.addEventListener('click', function (event) {
+        event.preventDefault(); //N/ execute mais o comportamento padrão desse link!
+        console.log('O comportamento padrão do link foi prevenido');
+
+        window.location.href = 'https://www.google.com'; //Acessa o link
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ex3</title>
+    <link rel="stylesheet" href="Ex3.JB.eventos.style.css"
+  </head>
+  <body>
+    
+    <!-- Div usando FUNÇÃO JS -->
+    <!-- <div id="changeColor" onmouseover="handleMouseOver()" onmouseout="handleMouseOut()">Teste</div> -->
+
+    <!-- Div usando addEventListenner -->
+    <div id="changeColor" >Teste</div>
+
+<script>
+
+// VAR que pega <div>
+let changeColor = document.getElementById('changeColor')
+
+// Função p/ o evento de passar o mouse sobre o elemento
+function handleMouseOver(){
+document.getElementById('changeColor').style.backgroundColor ='green';
+}
+
+// Função p/ o evento de tirar o mouse sobre o elemento
+function handleMouseOut(){
+  document.getElementById('changeColor').style.backgroundColor ='blue';
+}
+
+changeColor.addEventListener('mouseover', handleMouseOver)
+changeColor.addEventListener('mouseout', handleMouseOut)
+
+
+</script>
+  </body>
+</html>

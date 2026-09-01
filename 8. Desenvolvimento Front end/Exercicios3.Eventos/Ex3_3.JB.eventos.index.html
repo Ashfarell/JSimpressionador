@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ex3</title>
+  </head>
+  <body>
+    <h1>EXERCICIO 3</h1>
+
+    <form id="myForm">
+      Formulário Ex3
+      <p></p>
+      <input id="meuInput" type="text" placeholder="Preencha aqui">
+
+<button id="meuBotao">Enviar</button>
+
+<script>
+    let input = document.getElementById('meuInput');
+    let formulario = document.getElementById('myForm')
+
+    // Ex3-Passo4: Travando envio FORM ao clicar emENTER
+    meuInput.addEventListener('keypress',stopEnter)   //keypress = observa teclas pressiondas
+
+    function stopEnter(event){
+if(event.key==='Enter'){
+  console.log('ENTER PRESSIONADO!!')
+  event.preventDefault()
+}
+    }
+
+
+
+
+    // usando evendo p/ travar 'evento' padrão so site
+ formulario.addEventListener('submit', handleSubmit)  //Melhor (SUBMIT)
+    // meuBotao.addEventListener('click',handleSubmit)
+
+    function handleSubmit(event) {
+        event.preventDefault()     //Impede que o FOMR seja enviado==>página n/ recarrega!!!
+        console.log(input.value);
+        alert('Formulário n/ enviado!')
+    }
+</script>
+  </body>
+</html>

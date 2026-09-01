@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Eventos com JS</h1>
+
+    <button id="meuBotao">Cloquei aqui!</button>
+
+    <script>
+      //   function clicouBotao() {
+      //     alert('Clicou no botão') + console.log('Clicou no botão');
+      //   }
+
+      // Add manipulador de evento do clique botão
+      let botao = document.getElementById('meuBotao');
+
+      //   Utilizando addEventListener p/ 2 manipuladores
+      botao.addEventListener('click', function () {
+        console.log('1º MSG addEventListener');
+      }); //quando acontecer um clique nesse elemento
+
+      botao.addEventListener('click', function () {
+        console.log(1 + 2);
+      });
+
+      //   Utilizando o atributo ONCLICK  p/ 2 manipuladores
+
+      botao.onclick = function (evento) {
+        console.log('1º MSG c/ ONCLICK');
+      };
+
+      botao.onclick = function (evento) {
+        console.log('2º MSG c/ ONCLICK'); //Apenas esse será executado!
+      };
+    </script>
+  </body>
+</html>

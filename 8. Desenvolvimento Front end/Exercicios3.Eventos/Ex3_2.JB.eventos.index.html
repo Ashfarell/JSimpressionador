@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Eventos_Ex2</title>
+  </head>
+  <body>
+    <!-- Se usarmos FUNÇÃO -->
+    <!-- <button id="btn" onclick="handleClick()">Clique aqui</button> -->
+
+    <!-- Usando addEventListenner  -->
+    <button id="btn">Clique aqui</button>
+
+    <script>
+      let botao = document.getElementById('btn');
+      let count = 0;
+
+      function handleClick() {
+        count++;
+
+        if (count <= 3) {
+          console.log('Quantidade de cliques: ' + count);
+        } else {
+          alert('Cliques excedidos!');
+          botao.removeEventListener('click', handleClick); //Encerra o funcionamento do botão
+          console.log('FIM');
+        }
+      }
+
+      botao.addEventListener('click', handleClick);
+    </script>
+  </body>
+</html>
