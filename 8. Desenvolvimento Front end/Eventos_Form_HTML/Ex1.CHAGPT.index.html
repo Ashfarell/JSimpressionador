@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Formulário CHAGPT 1</title>
+
+    <style>
+      * {
+        margin: 5px;
+        padding: 4px;
+      }
+
+      .error-message {
+        color: red;
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Cadastro de participantes</h1>
+
+    <form id="formulario">
+      <br />
+      <label for="" id="nome" onmouseover="focoNome()" onmouseout="tirarFocoNome()">Nome:</label>
+      <input type="text" id="textoNome" class="obrigatorio" />
+      <span class="error-message">Campo obrigatório</span>
+
+      <br />
+
+      <label for="">Senha:</label>
+      <input type="password" id="senha" class="obrigatorio" />
+      <span class="error-message">Campo obrigatório</span>
+
+      <br />
+      <label for="">Confirmar senha:</label>
+      <input type="password" id="confirmarSenha" class="obrigatorio" />
+      <span class="error-message">Campo obrigatório</span>
+
+      <br />
+
+      <label for="">Email:</label>
+      <input type="email" id="email" class="obrigatorio" />
+      <span class="error-message">Campo obrigatório</span>
+
+      <br />
+
+      <label for="">Idade:</label>
+      <input type="number" id="idade" class="obrigatorio" />
+      <span class="error-message">Campo obrigatório</span>
+
+      <br />
+      <label for="">Data de nascimento:</label>
+      <input type="date" />
+
+      <!--                  GÊNERO (RADIO)--------------------------------------- -->
+      <br />
+      <label for="">Gênero:</label>
+
+      <br />
+
+      <label for="radio1">Masculino</label>
+      <input type="radio" id="radio1" name="Gênero" />
+
+      <br />
+
+      <label for="radio2">Feminino</label>
+      <input type="radio" id="radio2" name="Gênero" />
+
+      <br />
+
+      <label for="radio3">Outro</label>
+      <input type="radio" id="radio3" name="Gênero" />
+
+      <br />
+
+      <!--                 INTERESSES (CHECKBOX)--------------------------------------- -->
+      <label for="">Interesses:</label>
+      <br />
+
+      <label for="checkbox1">Tecnologia</label>
+      <input type="checkbox" id="checkbox1" />
+
+      <br />
+      <label for="checkbox2">Esportes</label>
+      <input type="checkbox" id="checkbox2" />
+      <br />
+      <label for="checkbox3">Música</label>
+      <input type="checkbox" id="checkbox3" />
+
+      <br />
+
+      <label for="Cidade">Cidade:</label>
+      <select name="GrupoSelect" id="cidade" onchange="trocarCidade()">
+        <option value="São Paulo">São Paulo</option>
+        <option value="MG">MG</option>
+        <option value="RJ">RJ</option>
+      </select>
+
+      <br />
+
+      <label for="textarea">Observações:</label>
+      <br />
+      <textarea name="textarea" id="textarea" cols="20" rows="10"></textarea>
+
+      <br />
+
+      <label for="">Foto:</label>
+      <input type="file" />
+
+      <br />
+
+      <label for="">Cadastrar</label>
+      <input type="submit" id="enviar" onclick="formularioEnviado()" />
+
+      <br />
+
+      <label for="">Limpar</label>
+      <input type="reset" />
+    </form>
+
+    <script src="Ex1.CHAGPT.script.js"></script>
+  </body>
+</html>

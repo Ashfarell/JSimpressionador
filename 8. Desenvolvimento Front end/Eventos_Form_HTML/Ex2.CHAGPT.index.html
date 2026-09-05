@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Formulário CHAGPT 2</title>
+    <style>
+      .error-message {
+        color: red;
+        display: none;
+      }
+      * {
+        margin: 2px;
+        padding: 4px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Formulário CHATGPT 2</h1>
+
+    <form id="meuFormulario">
+      <label for="">Nome:</label>
+      <input type="text" placeholder="Digite seu nome" class="obrigatorio" id="nome" />
+      <span class="error-message">Campo obrigatório</span>
+
+      <br />
+      <label for="">Email:</label>
+      <input type="email" class="obrigatorio" id="email" placeholder="Digite seu email" />
+      <span class="error-message">Campo obrigatório</span>
+
+      <br />
+      <label for="">Senha:</label>
+      <input type="password" class="obrigatorio" id="senha" />
+      <span class="error-message">Campo obrigatório</span>
+
+      <br />
+
+      <label for="">Confirmar senha:</label>
+      <input type="password" class="obrigatorio" id="confirmarSenha" />
+      <span class="error-message">Campo obrigatório</span>
+
+      <br />
+
+      <label for="">Data de nascimento:</label>
+      <input type="date" class="obrigatorio" id="dataNascimento" />
+      <span class="error-message">Camppo obrigatório</span>
+
+      <br />
+
+      <label for="">Idade:</label>
+      <input type="number" class="obrigatorio" id="idade" placeholder="Digite sua idade" />
+      <span class="error-message">Campo obrigatório</span>
+
+      <!--                                    RADIO -->
+      <!-- NAME: POD ESCOLHER =====> APENAS 1 GÊNERO -->
+      <br />
+      <label for="">Gênero:</label>
+      <br />
+      <label for="">Masculino</label>
+      <input type="radio" name="genero" />
+
+      <br />
+      <label for="">Feminino</label>
+      <input type="radio" name="genero" />
+
+      <br />
+      <label for="">Outro</label>
+      <input type="radio" name="genero" />
+
+      <br />
+      <br />
+      <!--                                    CHECKBOX -->
+      <label for="">Interesses:</label>
+      <br />
+
+      <label for="">Tecnologia</label>
+      <input type="checkbox" />
+
+      <br />
+      <label for="">Esportes</label>
+      <input type="checkbox" />
+      <br />
+
+      <label for="">Música</label>
+      <input type="checkbox" />
+
+      <br />
+      <!--                                    GROUP SELECT -->
+      <label for="">Cidade:</label>
+      <select name="GrupoSelect" id="cidade">
+        <option value=""></option>
+        <option value="SP">SP</option>
+        <option value="RJ">RJ</option>
+        <option value="MG">MG</option>
+      </select>
+
+      <br />
+      <label for="">Enviar formulário</label>
+      <input type="submit" onclick="formularioEnviado()" />
+
+      <br />
+      <label for="">Recomeçar formulário</label>
+      <input type="reset" />
+    </form>
+
+    <script src="Ex2.CHAGPT.script.js"></script>
+  </body>
+</html>
