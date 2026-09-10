@@ -1,0 +1,44 @@
+<!-- // Versão A onclick + FUNÇÃO -->
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>EX4 IMC</title>
+    <link rel="stylesheet" href="Ex4A.JB.style.css" />
+  </head>
+  <body>
+    <div id="imc-form">
+      <h1>Calculadora de IMC (FUNÇÃO)</h1>
+
+      <form id="calc-form">
+        <label for="">Nome:</label>
+        <input type="text" id="name" name="name" class="obrigatorio" />
+        <span class="error-message">Campo obrigatório</span>
+
+        <br />
+        <label for="">Altura (m):</label>
+        <input type="number" id="altura" name="altura" class="obrigatorio" />
+        <span class="error-message">Campo obrigatório</span>
+
+        <br />
+
+        <label for="">Peso (kg):</label>
+        <input type="number" id="peso" name="peso" class="obrigatorio" />
+        <span class="error-message">Campo obrigatório</span>
+
+        <br />
+
+        <label for="">Categoria IMC</label>
+        <input type="hidden" id="categoriaImcHidden" name="categoriaImcHidden" />
+        <br />
+
+        <button onclick="validarCamposObrigatorios(event)">Enviar</button>
+      </form>
+    </div>
+
+    <div id="resultado">Campo de resultado</div>
+
+    <script src="Ex4A.JB.script.js"></script>
+  </body>
+</html>

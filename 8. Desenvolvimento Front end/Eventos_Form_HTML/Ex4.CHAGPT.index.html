@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>EX4 CHATGPT</title>
+    <style>
+      * {
+        /* background-color: beige; */
+
+        .caixaTarefas {
+          background-color: aqua;
+          width: 500px;
+          margin: 100px auto;
+          padding: 20px;
+          border: 10px solid #ccc;
+          border-radius: 10px;
+          border-color: black;
+        }
+
+        #listaDeTarefas li {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+        }
+
+        #input1 {
+          color: blue;
+          background-color: antiquewhite;
+        }
+      }
+      .concluida {
+        text-decoration: line-through;
+        color: brown;
+      }
+
+      #botaoAdicionar {
+        color: blue;
+      }
+
+      #botaoRemover {
+        color: red;
+      }
+
+      #botaoConcluir {
+        color: green;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="caixaTarefas">
+      <h1>Formulário CHAGPT 3</h1>
+
+      <ul id="listaDeTarefas">
+        Lista de tarefas:
+        <li>Tarefa de demonstração</li>
+      </ul>
+
+      <label for="">Tarefa</label>
+      <input type="text" placeholder="Digite sua terefa" id="input1" onmouseover="mouseEmCima('red')" onmouseout="mouseEmCima('black')" />
+
+      <button id="botaoAdicionar">Adicionar</button>
+    </div>
+    <script src="Ex4.CHAGPT.script.js"></script>
+  </body>
+</html>
