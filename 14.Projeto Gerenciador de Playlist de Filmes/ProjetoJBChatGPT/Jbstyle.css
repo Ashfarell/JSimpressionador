@@ -1,0 +1,12 @@
+header {
+  background-color: blue;
+}
+
+#botaoBuscar {
+  color: red;
+  background-color: aqua;
+}
+
+#modal {
+  display: none;
+}

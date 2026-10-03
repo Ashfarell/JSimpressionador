@@ -34,7 +34,7 @@ criarTabela.addEventListener('click', function (event) {
   let colunaFaturamento = document.createElement('span');
   //                    2.DEFININDO TEXTO COLUNA DINÂMICA FATURAMENTO
   colunaFaturamento.textContent = 'Faturamento';
-  //                   3. COLOCANDO FATURAMENTO DENTRO DE CABEÇAHO ( fora do FOR)
+  //                   3. COLOCANDO FATURAMENTO DENTRO DE CABEÇALHO ( fora do FOR)
   cabecalho.appendChild(colunaFaturamento);
 
   //                  B)     1.CRIANDO COLUNA META DINAMICAMENTE
