@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Aula 6</title>
+  </head>
+  <body>
+    <h1 id="titulo">Título</h1>
+
+    <p id="teste">vamos mudar de cor</p>
+
+    <script>
+      //                 MUDAR TEXTO APÓS UM PERÍODO  ==>setTimeout
+      setTimeout(function () {
+        document.getElementById('teste').textContent = 'Vamos mudar';
+        console.log('Alterado');
+      }, 2000);
+
+      setTimeout(function () {
+        document.getElementById('teste').textContent = 'Vamos voltar';
+        console.log('Alterado');
+      }, 5000);
+
+      //                      MUDAR COR APÓS INTERVALO      ==>setInterval
+      setInterval(() => {
+        let titulo = document.getElementById('titulo');
+        titulo.style.color = titulo.style.color === 'red' ? 'blue' : 'red';
+      }, 1000);
+    </script>
+  </body>
+</html>
