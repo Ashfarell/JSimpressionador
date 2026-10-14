@@ -52,3 +52,63 @@ buscarProduto()
 setTimeout(() => {
   console.log('FIM EX2-------------------------------------------------------------------');
 }, 3000);
+
+// 🧩 Exercício 4 — (Aquecimento)-------------------------------------------------------------------------
+function verificarIdade() {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      let idade = 20;
+      if (idade >= 18) {
+        resolve('Usuário maior de idade!');
+      } else {
+        reject('Usuário menor de idade!');
+      }
+    }, 2000);
+  });
+}
+
+verificarIdade()
+  .then((resultado) => {
+    console.log(`${resultado} Sucesso`);
+  })
+  .catch((erro) => {
+    console.log(`${erro} Falha`);
+  })
+  .finally(() => {
+    console.log('Programa encerrado');
+  });
+
+setTimeout(() => {
+  console.log('Fim EX3');
+}, 3000);
+
+// 🧩 EX5 — Buscar informações de um produto
+function buscarProduto() {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      const produto = {
+        nome: 'Notebook',
+        preco: 3500,
+      };
+      let produtoEncontrado = true;
+      if (produtoEncontrado) {
+        // resolve(`Produto: ${produto.nome}  Preço: ${produto.preco}`);  //CASO A
+        resolve(produto); //CASO B
+      } else {
+        reject('Produto não encontrado');
+      }
+    }, 2000);
+  });
+}
+
+buscarProduto()
+  .then((resultado) => {
+    // console.log(`${resultado} -Produto encontrado -Sucesso EX5`);  //CASO A
+    console.log(`O produto ${resultado.nome} foi encontrado com o preço de ${resultado.preco}`); //CASO B
+  })
+  .catch((erro) => {
+    console.log(`${erro} Falha EX5`);
+  })
+  .finally(() => {
+    console.log('Programa encerrado EX5');
+  });
